@@ -1,0 +1,15 @@
+name: Manter Streamlit Acordado
+on:
+  schedule:
+    - cron: '0 */10 * * *' # Roda automaticamente a cada 10 horas
+jobs:
+  wake-up:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Commit Vazio
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit --allow-empty -m "Manter app ativo automaticamente"
+          git push
